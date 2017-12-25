@@ -1,9 +1,12 @@
+import sys
 import re
 import unicodecsv as csv
 import feedparser
 
+print "Reading content index..."
 records = []
 try:
+    progress = 0
     with open('content.csv', 'rb') as content_csv:
         reader = csv.reader(content_csv, delimiter=';', quotechar='|', encoding='utf-8')
         for row in reader:
@@ -14,10 +17,14 @@ try:
             direct_embed = row[4] == '1'
             record = (title, duration, thumb_large, embed, direct_embed)
             records.append(record)
-except IOError:
-    pass
+            progress = progress + 1
+            print "Progress: %s" % progress
+except IOError as e:
+    print e
+    sys.exit(1)
 
 
+print "Accessing feed..."
 r = feedparser.parse('https://www.pornhub.com/video/webmasterss')
 
 
@@ -31,7 +38,7 @@ new_records = [(item['title'], item['duration'], item['thumb_large'], iframe_url
 
 known_embeds = map(lambda r: r[3], records)
 
-
+print "Writing content index..."
 with open('content.csv', 'ab') as content_csv:
     writer = csv.writer(content_csv, delimiter=';', quotechar='|', encoding='utf-8')
     unique_recs = filter(lambda r: r[3] not in known_embeds, new_records)
