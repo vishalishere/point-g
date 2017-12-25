@@ -1,4 +1,6 @@
 *.pyc
 .DS_Store
 env/
-
+website/data/json/*
+content.csv
+pornhub.com-db.csv
