@@ -18,7 +18,8 @@ try:
             record = (title, duration, thumb_large, embed, direct_embed)
             records.append(record)
             progress = progress + 1
-            print "Progress: %s" % progress
+            if progress % 1000 == 0:
+                print "Progress: %s" % progress
 except IOError as e:
     print e
     sys.exit(1)
