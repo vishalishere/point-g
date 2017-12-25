@@ -10,6 +10,10 @@ try:
     with open('content.csv', 'rb') as content_csv:
         reader = csv.reader(content_csv, delimiter=';', quotechar='|', encoding='utf-8')
         for row in reader:
+            progress = progress + 1
+
+            if progress < 3200000:
+                continue
             title = row[0]
             duration = row[1]
             thumb_large = row[2]
@@ -17,7 +21,7 @@ try:
             direct_embed = row[4] == '1'
             record = (title, duration, thumb_large, embed, direct_embed)
             records.append(record)
-            progress = progress + 1
+
             if progress % 1000 == 0:
                 print "Progress: %s" % progress
 except IOError as e:
