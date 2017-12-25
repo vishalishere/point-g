@@ -10,5 +10,8 @@ update:
 data:
 	env/bin/python build_data.py
 
+sync:
+	aws s3 sync ./website/ s3://phleaks.com/
+
 server:
 	cd website/ && python -m SimpleHTTPServer
