@@ -94,7 +94,7 @@ function buildLayout() {
 
   var markup = "";
 
-  for (var i = 0; i < batches[key].length; i++) {
+  for (var i = batches[key].length - 1; i >=0 ; i--) {
     var b = batches[key][i];
     if (b[4] !== true) { // todo: add vol/batch
       markup = markup + '<img data-key="' + key + '" data-idx="' + i + '" data-src="' + b[2] + '">';
