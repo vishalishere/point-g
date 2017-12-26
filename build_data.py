@@ -42,7 +42,7 @@ latest = {'idx': len(records) - 1, 'batch': 0, 'vol': 0}
 
 k = 0
 
-vol = 1
+vol = 0
 
 with open('content.csv', 'rb') as content_csv:
     reader = csv.reader(content_csv, delimiter=';', quotechar='|', encoding='utf-8')
