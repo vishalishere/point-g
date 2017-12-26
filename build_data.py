@@ -36,11 +36,14 @@ print "Filesystem tree successfully built."
 
 batch = []
 
-batch_num = 0
+batch_num = 1
 
 latest = {'idx': len(records) - 1, 'batch': 0, 'vol': 0}
 
 k = 0
+
+vol = 1
+
 with open('content.csv', 'rb') as content_csv:
     reader = csv.reader(content_csv, delimiter=';', quotechar='|', encoding='utf-8')
     for row in reader:
@@ -48,23 +51,25 @@ with open('content.csv', 'rb') as content_csv:
         duration = row[1]
         thumb_large = row[2]
         embed = row[3]
-        direct_embed = row[4] == '1'
+        direct_embed = row[4] == 'True'
         record = (title, duration, thumb_large, embed, direct_embed)
 
         batch.append(record)
         if len(batch) == batch_size:
-            batch_num = batch_num + 1
-            vol = int(k / (batches_count * batch_size))
+
             batch_path = './website/data/json/%s/%s.js' % (vol, batch_num)
             latest['batch'] = batch_num
             latest['vol'] = vol
             with open(batch_path, 'w') as f:
                 f.write("if (typeof batches === 'undefined') batches = {}; batches['%s/%s'] = %s;" % (vol, batch_num, json.dumps(batch)))
 
+            batch_num = batch_num + 1
+
             print "Batch %s/%s processed." % (vol, batch_num)
 
             if batch_num == batches_count:
                 batch_num = batch_num - batches_count
+                vol = vol + 1
 
             batch = []
 
