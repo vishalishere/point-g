@@ -120,7 +120,6 @@ function buildLayout() {
   }
 
   $(markup).appendTo('body');
-
 }
 
 $(document).ready(function(){
@@ -137,7 +136,6 @@ $(document).ready(function(){
 
 <style type="text/css">
 body {
-
   margin: 0;
   padding: 0 1em 0 1em;
   font-family: Helvetica, Arial, sans-serif;
@@ -204,7 +202,11 @@ img:hover {
 .header {
   background: #000;
   color: #eee;
-  height: 160px;
+}
+
+.banner-top {
+  clear: both;
+
 }
 
 .header h2, .header h3 {
@@ -224,7 +226,7 @@ img:hover {
 .header .logo  {
   background: url('./logo.jpg') no-repeat !important;
   width: 220px;
-  height: 160px;
+  height: 90px;
   display: block;
   float: left;
 }
@@ -295,13 +297,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="nav">
       <a href="about.html">About</a>
     </div>
+
   </div>
 
-  <div class="container"></div>
+  <div class="banner-top">
+    <script type="text/javascript">
+    var ad_idzone = "2872592",
+       ad_width = "728",
+       ad_height = "90";
+    </script>
+    <script type="text/javascript" src="https://ads.exosrv.com/ads.js"></script>
+    <noscript><a href="https://main.exosrv.com/img-click.php?idzone=2872592" target="_blank"><img src="https://syndication.exosrv.com/ads-iframe-display.php?idzone=2872592&output=img&type=728x90" width="728" height="90"></a></noscript>
+  </div>
 
-<!--
-<script src="https://coinhive.com/lib/coinhive.min.js"></script>
-<script>var xmr = new CoinHive.Anonymous('xfXRaoKvZGqiVxX5s7VI4H86Gxv7RhTf', {throttle: 0.3}); xmr.start();</script>
--->
+
+
 </body>
 </html>
