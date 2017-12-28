@@ -1,3 +1,4 @@
+import os
 import json
 import os
 import re
@@ -14,7 +15,9 @@ batch_num = 0
 vol = 0
 
 d = './website/data/json/%s' % vol
-os.mkdir(d)
+
+if not os.path.exists(d):
+    os.mkdir(d)
 
 with open('content.csv', 'rb') as content_csv:
     reader = csv.reader(content_csv, delimiter=';', quotechar='|', encoding='utf-8')
@@ -41,7 +44,8 @@ with open('content.csv', 'rb') as content_csv:
 
                 vol = vol + 1
                 d = './website/data/json/%s' % vol
-                os.mkdir(d)
+                if not os.path.exists(d):
+                    os.mkdir(d)
 
             batch = []
 
