@@ -60,7 +60,7 @@ function layoutUpdate() {
     if (checkVisible($(el), 'visible')) {
       $(el).attr('src', $(el).data('src'));
 
-      if ($(el).data('idx') == 1000 - 1) { // batch size
+      if ($(el).data('idx') == 0) {
         content.batch = content.batch - 1;
         if (content.batch < 1) {
           content.vol = content.vol - 1;
@@ -270,7 +270,7 @@ img:hover {
 
 </head>
 <body>
-  
+
   <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K4CFZB2"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
